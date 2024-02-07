@@ -9,7 +9,7 @@ import '../../../../utils/styles_fonts/fonts_styles.dart';
 import '../../../../widgets/background_circles.dart';
 import '../../../../widgets/button_primary.dart';
 import '../../../../widgets/logo_section.dart';
-import '../../../../widgets/text_imput_field.dart';
+import '../../../../widgets/inputs/text_imput_field.dart';
 import '../../../../widgets/upload_file.dart';
 
 class RegisterWorkPage extends StatefulWidget {

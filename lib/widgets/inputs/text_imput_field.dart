@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
 
-import '../utils/styles_fonts/fonts_styles.dart';
+import '../../utils/styles_fonts/fonts_styles.dart';
 
 // ignore: must_be_immutable
 class TextInputField extends StatelessWidget {
@@ -113,7 +113,7 @@ class TextInputField extends StatelessWidget {
                   borderSide: BorderSide(
                     color: FlColors.withe2,
                   ),
-                ), 
+                ),
                 filled: true,
                 focusColor: Colors.white,
                 fillColor: Colors.white.withOpacity(0.3),

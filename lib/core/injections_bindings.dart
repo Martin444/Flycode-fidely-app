@@ -1,6 +1,7 @@
 import 'package:flycode/fetures/auth/presentation/controllers/login_controller.dart';
 import 'package:flycode/fetures/auth/presentation/controllers/register_controller.dart';
 import 'package:flycode/fetures/home/presentation/controllers/home_controller.dart';
+import 'package:flycode/fetures/new_client/presentation/controllers/new_client_controller.dart';
 import 'package:flycode/fetures/on_boarding.dart/controllers/onborading_controller.dart';
 import 'package:flycode/fetures/user/presentation/controllers/user_controller.dart';
 import 'package:get/get.dart';
@@ -26,6 +27,10 @@ class MainBindings extends Bindings {
     );
     Get.lazyPut(
       () => HomeController(),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => NewClientController(),
       fenix: true,
     );
   }

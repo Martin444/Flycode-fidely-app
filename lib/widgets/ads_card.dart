@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/button_rounded.dart';
 import 'package:flycode/widgets/card_glass.dart';
+import 'package:get/get.dart';
 
 class AdCard extends StatefulWidget {
   const AdCard({super.key});
@@ -55,7 +57,9 @@ class _AdCardState extends State<AdCard> {
                         flex: 1,
                         child: ButtonRounded(
                           title: 'Crear',
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(FlRoutes.REGISTER_CLIENT);
+                          },
                           load: false,
                         ),
                       ),

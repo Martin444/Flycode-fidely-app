@@ -5,6 +5,8 @@ import 'package:flycode/fetures/auth/presentation/views/register_user.dart';
 import 'package:flycode/fetures/auth/presentation/views/register_work_page.dart';
 import 'package:flycode/fetures/home/presentation/controllers/home_binding.dart';
 import 'package:flycode/fetures/home/presentation/page/home_page.dart';
+import 'package:flycode/fetures/new_client/presentation/controllers/new_client_binding.dart';
+import 'package:flycode/fetures/new_client/presentation/views/register_client.dart';
 import 'package:flycode/fetures/user/presentation/controllers/user_binding.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:get/get.dart';
@@ -35,6 +37,13 @@ class FlPages {
       name: FlRoutes.REGISTER_WORK,
       middlewares: [AuthMiddleware()],
       page: () => const RegisterWorkPage(),
+    ),
+    GetPage(
+      name: FlRoutes.REGISTER_CLIENT,
+      transition: Transition.fadeIn,
+      middlewares: [AuthMiddleware()],
+      binding: NewClientBinding(),
+      page: () => const RegisterClient(),
     ),
   ];
 }
