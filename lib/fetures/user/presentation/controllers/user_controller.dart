@@ -1,5 +1,6 @@
 import 'package:flycode/fetures/auth/model/user_model.dart';
 import 'package:flycode/fetures/user/data/usescases/user_usescases.dart';
+import 'package:flycode/fetures/user/presentation/handles/user_error_handle.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
@@ -14,10 +15,9 @@ class UserController extends GetxController {
       isLoadingUser = false;
       update();
     } catch (e) {
-      print('=====================USER ERROR======================');
       isLoadingUser = false;
       update();
-      print(e);
+      HandleUserError(e);
     }
   }
 

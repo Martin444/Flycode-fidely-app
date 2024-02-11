@@ -91,6 +91,7 @@ class _LoginUserPageState extends State<LoginUserPage> {
                                     isPass: true,
                                     visibleText: firstPass,
                                     errorText: _.errorTextPassword.value,
+                                    textInputAction: TextInputAction.done,
                                     function: () {
                                       setState(() {
                                         firstPass = !firstPass;

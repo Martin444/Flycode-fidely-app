@@ -6,7 +6,7 @@ import '../utils/styles_fonts/fonts_styles.dart';
 class ButtonPrimary extends StatelessWidget {
   //parametros
   String title;
-  VoidCallback onPressed;
+  VoidCallback? onPressed;
   bool load;
   bool disabled = false;
 
@@ -24,7 +24,7 @@ class ButtonPrimary extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: disabled
+          backgroundColor: disabled || onPressed == null
               ? MaterialStateProperty.all(Colors.grey[400])
               : MaterialStateProperty.all(Colors.white),
           overlayColor: MaterialStateProperty.all(
@@ -39,7 +39,7 @@ class ButtonPrimary extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: disabled ? null : onPressed,
+        onPressed: disabled || onPressed == null ? null : onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -6,10 +6,14 @@ import 'package:flycode/fetures/auth/model/user_model.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/funcions/validators.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   RxString errorTextEmail = ''.obs;
   RxString errorTextPassword = ''.obs;
 
@@ -26,6 +30,9 @@ class LoginController extends GetxController {
       );
       var responseLogin = await LoginUserUseCase().execute(userLogin);
       ACCESS_TOKEN = responseLogin.accessToken;
+      var sharedToken = await _prefs;
+
+      sharedToken.setString('acccesstoken', ACCESS_TOKEN);
       isLogging.value = false;
       if (responseLogin.needCommerce) {
         Get.toNamed(FlRoutes.REGISTER_WORK);
@@ -48,7 +55,7 @@ class LoginController extends GetxController {
   }
 
   RxBool validateBtnLoginUser() {
-    var isEmail = validateEmail(emailController.text);
+    var isEmail = FlValidators.validateEmail(emailController.text);
     if (!isEmail && emailController.text.length >= 4) {
       errorTextEmail.value = 'Ingresa un email válido';
     } else {

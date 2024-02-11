@@ -64,7 +64,7 @@ class RegisterController extends GetxController {
   String? errorTextPassword;
 
   bool validateCorrectEmail(String email) {
-    bool isEmail = validateEmail(email) || email.isEmpty;
+    bool isEmail = FlValidators.validateEmail(email) || email.isEmpty;
     if (isEmail) {
       errorTextEmail = null;
       update();
