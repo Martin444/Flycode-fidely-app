@@ -20,17 +20,15 @@ class OnBoardCard extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Center(child: SvgPicture.asset(pathIcon!)),
-        const SizedBox(
-          height: 60,
-        ),
+        const Spacer(),
         Padding(
           padding: EdgeInsets.only(right: Get.width / 9),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 title!,

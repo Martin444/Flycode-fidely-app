@@ -31,7 +31,10 @@ class DrawMenu extends StatelessWidget {
                   child: SizedBox(
                     child: SvgPicture.asset(
                       FlAssetsIcons.backIconSvg,
-                      color: FlColors.withe2,
+                      colorFilter: ColorFilter.mode(
+                        FlColors.withe2,
+                        BlendMode.color,
+                      ),
                       height: 10,
                     ),
                   ),

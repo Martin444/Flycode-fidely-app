@@ -10,7 +10,7 @@ class UserController extends GetxController {
     try {
       isLoadingUser = true;
       update();
-      var infoMe = await UserUseCase().execute();
+      User infoMe = await UserUseCase().execute();
       principalUser = infoMe;
       isLoadingUser = false;
       update();
@@ -23,13 +23,16 @@ class UserController extends GetxController {
 
   String getSaludo() {
     var now = DateTime.now();
-
-    if (now.hour < 12) {
-      return 'Buenos días ${principalUser!.name!.split(' ')[0]}!';
-    } else if (now.hour <= 18) {
-      return 'Buenos tardes ${principalUser!.name!.split(' ')[0]}!';
+    if (principalUser != null) {
+      if (now.hour < 12) {
+        return 'Buenos días ${principalUser!.name!.split(' ')[0]}!';
+      } else if (now.hour <= 18) {
+        return 'Buenos tardes ${principalUser!.name!.split(' ')[0]}!';
+      } else {
+        return 'Buenos noches ${principalUser!.name!.split(' ')[0]}!';
+      }
     } else {
-      return 'Buenos noches ${principalUser!.name!.split(' ')[0]}!';
+      return '';
     }
   }
 }

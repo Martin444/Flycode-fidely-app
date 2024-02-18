@@ -7,6 +7,7 @@ class FlAssetsIcons {
   static String menuSvg = 'lib/utils/assets/menu.svg';
   static String giftSvg = 'lib/utils/assets/gift.svg';
   static String avatarSvg = 'lib/utils/assets/avatar.svg';
+  static String newClientSvg = 'lib/utils/assets/clientinterv.svg';
 }
 
 class FlAssetsImages {

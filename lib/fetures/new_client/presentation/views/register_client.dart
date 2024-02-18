@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/fetures/new_client/presentation/controllers/new_client_controller.dart';
+import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
 import 'package:flycode/utils/funcions/validators.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
@@ -40,7 +41,7 @@ class _RegisterClientState extends State<RegisterClient> {
             () {
               return Container(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 10,
+                  vertical: 20,
                   horizontal: 20,
                 ),
                 child: Column(
@@ -48,7 +49,10 @@ class _RegisterClientState extends State<RegisterClient> {
                   children: [
                     Column(
                       children: [
-                        const LogoSection(),
+                        LogoSection(
+                          titleBar: 'Nuevo cliente',
+                          routeBack: FlRoutes.HOME,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
@@ -122,11 +126,14 @@ class _RegisterClientState extends State<RegisterClient> {
                           title: 'Crear',
                           onPressed: () {
                             isValidForm = _formKey.currentState!.validate();
+                            if (isValidForm) {
+                              newClient.registerClientCommerce();
+                            }
                           },
                           load: newClient.isLoading.value,
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                       ],
                     ),

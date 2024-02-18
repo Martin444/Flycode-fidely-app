@@ -10,14 +10,15 @@ import '../../model/commerce_model.dart';
 class RegisterWorkProvider extends RegisterWorkRespository {
   Uri registerURl = Uri.parse('$URL_FIDELY/commerces');
   @override
-  Future<Commerce> registerCommerce(Commerce comerce) async {
+  // ignore: avoid_renaming_method_parameters
+  Future<Commerce> registerCommerce(Commerce commerce) async {
     try {
-      var response = await http.post(
+      var newCommerce = await http.post(
         registerURl,
         headers: {'Authorization': 'Bearer $ACCESS_TOKEN'},
-        body: comerce.toJson(),
+        body: commerce.toJson(),
       );
-      var respJson = jsonDecode(response.body);
+      var respJson = jsonDecode(newCommerce.body);
       return Commerce.fromJson(respJson);
     } catch (e) {
       throw HttpException(e.toString());

@@ -5,6 +5,8 @@ class FlColors {
 
   static Color circle1purple = const Color(0xffBF46B3);
 
+  static Color bgError = const Color(0xffF47174);
+
   static Color circle2blue = const Color(0xff3E3D8C);
 
   static Color withe2 = const Color(0xFFD7D7D7);

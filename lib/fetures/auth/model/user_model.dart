@@ -23,15 +23,20 @@ class User {
 
   static User fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      phone: json['password'],
-      role: json['role'],
-      createAt: DateTime.parse(json['createAt']),
-      updateAt: DateTime.parse(json['updateAt']),
-      photoURL: json['photoURL'],
-      password: json['password'],
+      id: json['id'] ?? '',
+      name: json['name'] ??
+          'Sin nombre', // Asigna un valor por defecto si es nulo
+      email: json['email'] ?? '',
+      phone: json['phone'] ?? '',
+      role: json['role'] ?? '',
+      createAt: json['createAt'] == null
+          ? null
+          : DateTime.parse(
+              json['createAt']), // Evita llamar a DateTime.parse si es nulo
+      updateAt:
+          json['updateAt'] == null ? null : DateTime.parse(json['updateAt']),
+      photoURL: json['photoURL'] ?? '',
+      password: json['password'] ?? '',
     );
   }
 }

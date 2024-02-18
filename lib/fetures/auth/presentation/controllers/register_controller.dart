@@ -10,6 +10,7 @@ import 'package:flycode/utils/funcions/validators.dart';
 import 'package:get/get.dart';
 
 import '../../model/commerce_model.dart';
+import '../../model/user_success_model.dart';
 
 class RegisterController extends GetxController {
   bool isLoadRegister = false;
@@ -23,7 +24,7 @@ class RegisterController extends GetxController {
         email: emailController.text,
         phone: '',
         password: passwordController.text,
-        role: 'consumer',
+        role: 'joined',
       );
       await registerUserWithEmailAndPassword(newUser);
       isLoadRegister = false;
@@ -33,11 +34,10 @@ class RegisterController extends GetxController {
     }
   }
 
-  Future<String> registerUserWithEmailAndPassword(User user) async {
+  Future<UserSuccess> registerUserWithEmailAndPassword(User user) async {
     try {
       var response = await RegisterUserUseCase().execute(user);
-      var responseJson = jsonDecode(response);
-      ACCESS_TOKEN = responseJson['access_token'];
+      ACCESS_TOKEN = response.accessToken;
       return response;
     } catch (e) {
       rethrow;

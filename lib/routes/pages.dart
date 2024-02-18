@@ -7,6 +7,7 @@ import 'package:flycode/fetures/home/presentation/controllers/home_binding.dart'
 import 'package:flycode/fetures/home/presentation/page/home_page.dart';
 import 'package:flycode/fetures/new_client/presentation/controllers/new_client_binding.dart';
 import 'package:flycode/fetures/new_client/presentation/views/register_client.dart';
+import 'package:flycode/fetures/new_client/presentation/views/register_success.dart';
 import 'package:flycode/fetures/user/presentation/controllers/user_binding.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:get/get.dart';
@@ -44,6 +45,13 @@ class FlPages {
       middlewares: [AuthMiddleware()],
       binding: NewClientBinding(),
       page: () => const RegisterClient(),
+    ),
+    GetPage(
+      name: FlRoutes.REGISTER_SUCCESS,
+      transition: Transition.fadeIn,
+      middlewares: [AuthMiddleware()],
+      binding: NewClientBinding(),
+      page: () => const RegisterSuccess(),
     ),
   ];
 }
