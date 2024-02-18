@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flycode/fetures/new_client/presentation/controllers/new_client_controller.dart';
+import 'package:flycode/fetures/client/presentation/controllers/new_client_controller.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
 import 'package:flycode/utils/funcions/validators.dart';

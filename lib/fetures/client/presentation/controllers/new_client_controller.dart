@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flycode/fetures/auth/data/usescases/register_client_usescase.dart';
 import 'package:flycode/fetures/auth/model/user_model.dart';
 import 'package:flycode/fetures/auth/model/user_success_model.dart';
-import 'package:flycode/fetures/new_client/presentation/handle/create_client_error.dart';
+import 'package:flycode/fetures/client/presentation/handle/create_client_error.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:get/get.dart';
