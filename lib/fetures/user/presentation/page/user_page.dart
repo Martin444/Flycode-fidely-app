@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flycode/routes/routes.dart';
+import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
+import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
+import 'package:flycode/widgets/background_circles.dart';
+import 'package:flycode/widgets/card_glass.dart';
 import 'package:flycode/widgets/carrousel.dart';
 import 'package:flycode/widgets/disscount.dart';
+import 'package:flycode/widgets/logo_section.dart';
+import 'package:flycode/widgets/tab_widget.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -15,47 +22,189 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: FlColors.primaryColorsBackground,
-      body: Column(
+      body: Stack(
         children: [
+          const BackgroundCircles(),
           Container(
-            height: 100,
-            child: Carrousel(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+              horizontal: 20,
+            ),
+            child: Column(
               children: [
-                DiscountCard(
-                  title: 'Este es el descuento uno 1',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
+                LogoSection(
+                  titleBar: 'Perfil del cliente',
+                  routeBack: FlRoutes.HOME,
                 ),
-                DiscountCard(
-                  title: 'Este es el descuento uno 2',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
+                const SizedBox(
+                  height: 30,
                 ),
-                DiscountCard(
-                  title: 'Este es el descuento uno 3',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
+                const ProfileHeader(),
+                const SizedBox(
+                  height: 10,
                 ),
-                DiscountCard(
-                  title: 'Este es el descuento uno 4',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
+                const ButtonIconText(),
+                const SizedBox(
+                  height: 10,
                 ),
-                DiscountCard(
-                  title: 'Este es el descuento uno 5',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
+                const PurchaseTile(),
+                const SizedBox(
+                  height: 10,
                 ),
-                DiscountCard(
-                  title: 'Este es el descuento uno 6',
-                  imageUrl:
-                      'https://www.bing.com/th?id=ALSTUF4DBD5C1B72DA87EEB0A6ADB4322EB48FB797D25D0669BA3EC4745CFFA06A672&pid=cdx&w=320&h=189&c=7',
-                ),
+                SizedBox(
+                  height: 250,
+                  child: Column(
+                    children: [
+                      Carrousel(
+                        children: [
+                          DiscountCard(
+                            title: 'Producto',
+                            imageUrl: FlAssetsImages.catito,
+                          ),
+                          DiscountCard(
+                            title: 'Producto 1',
+                            imageUrl: FlAssetsImages.catito,
+                          ),
+                          DiscountCard(
+                            title: 'Producto 2',
+                            imageUrl: FlAssetsImages.catito,
+                          ),
+                          DiscountCard(
+                            title: 'Producto 2',
+                            imageUrl: FlAssetsImages.catito,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class PurchaseTile extends StatelessWidget {
+  const PurchaseTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CardBlured(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Articulo de mi tienda',
+            style: FlTextStyle.textInput1,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Hace 2h',
+                style: FlTextStyle.description2,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                r'$3232',
+                style: FlTextStyle.textInput1,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ButtonIconText extends StatelessWidget {
+  const ButtonIconText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.playlist_add_rounded,
+            color: FlColors.withe2,
+            fill: 0.3,
+          ),
+          Text(
+            'Registrar compra',
+            style: FlTextStyle.secundaryButtonStyle,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: const Alignment(-0.9, -1.5),
+      children: [
+        CardBlured(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 90,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'ALan brito',
+                          style: FlTextStyle.title5,
+                        ),
+                        Text(
+                          'Desde 22/22/2922',
+                          style: FlTextStyle.description2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TabsWidget(
+                titles: const ['Compras', 'Cupones'],
+                onChange: (index) => null,
+              ),
+            ],
+          ),
+        ),
+        CircleAvatar(
+          radius: 40,
+          backgroundImage: NetworkImage(
+            FlAssetsImages.catito,
+          ),
+        ),
+      ],
     );
   }
 }

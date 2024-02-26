@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/core/injections_bindings.dart';
 import 'package:flycode/routes/pages.dart';
+import 'package:flycode/utils/colors/fl_colors.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/config.dart';
 
@@ -30,7 +32,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Fidely',
+      theme: ThemeData(
+        primaryColor: FlColors.primaryColorsBackground,
+      ),
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [
+        Locale('en'), // Inglés
+        Locale('es'), // españól
+      ],
       getPages: FlPages.pagesRoutes,
       initialBinding: MainBindings(),
     );

@@ -27,11 +27,11 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
 }
 
 class SuccesPage extends StatelessWidget {
-  String title;
-  String? desciprtion;
-  String pathIcon;
+  final String title;
+  final String? desciprtion;
+  final String pathIcon;
 
-  SuccesPage({
+  const SuccesPage({
     super.key,
     required this.title,
     required this.pathIcon,
@@ -55,7 +55,7 @@ class SuccesPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  LogoSection(),
+                  const LogoSection(),
                   Expanded(
                     child: OnBoardCard(
                       title: 'Cliente registrado con éxito!',

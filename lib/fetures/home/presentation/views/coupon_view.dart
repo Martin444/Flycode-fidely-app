@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flycode/routes/routes.dart';
 import 'package:flycode/widgets/ads_card.dart';
+import 'package:get/get.dart';
+
+import '../../../../utils/assets/routes/assets_routes.dart';
 
 class CouponView extends StatelessWidget {
   const CouponView({
@@ -13,23 +17,16 @@ class CouponView extends StatelessWidget {
         horizontal: 20,
         vertical: 20,
       ),
-      child: const Column(
+      child: Column(
         children: [
-          AdCard(),
-          SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 10,
+          AdCard(
+            title: '¿Querés vender más?',
+            description:
+                'Aprende a gestionar tus cupones y nosotros te ayudamos con los datos.',
+            pathUrl: FlAssetsIcons.onBoard1,
+            onClick: () {
+              Get.toNamed(FlRoutes.CREATE_CUPON);
+            },
           ),
         ],
       ),

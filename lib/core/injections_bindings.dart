@@ -1,5 +1,6 @@
 import 'package:flycode/fetures/auth/presentation/controllers/login_controller.dart';
 import 'package:flycode/fetures/auth/presentation/controllers/register_controller.dart';
+import 'package:flycode/fetures/cupon/presentation/controllers/create_cupon_controller.dart';
 import 'package:flycode/fetures/home/presentation/controllers/home_controller.dart';
 import 'package:flycode/fetures/client/presentation/controllers/new_client_controller.dart';
 import 'package:flycode/fetures/on_boarding.dart/controllers/onborading_controller.dart';
@@ -31,6 +32,10 @@ class MainBindings extends Bindings {
     );
     Get.lazyPut(
       () => NewClientController(),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => CreateCuponController(),
       fenix: true,
     );
   }

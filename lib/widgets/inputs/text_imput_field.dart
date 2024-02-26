@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,12 +15,14 @@ class TextInputField extends StatelessWidget {
   TextEditingController controller;
   TextInputType inputType;
   TextInputAction? textInputAction;
+  List<TextInputFormatter>? formaters;
   bool visibleText;
   bool isPass;
   int? maxLines;
   String? errorText;
   Function? function;
   Function(String)? functionSubmited;
+  Function(String)? onChange;
   String? Function(String?)? validator;
 
   TextInputField({
@@ -31,7 +35,9 @@ class TextInputField extends StatelessWidget {
     this.errorText,
     this.maxLines = 1,
     this.function,
+    this.formaters,
     this.functionSubmited,
+    this.onChange,
     this.textInputAction,
     this.validator,
   }) : super(key: key);
@@ -60,6 +66,7 @@ class TextInputField extends StatelessWidget {
   }
 
   List<TextInputFormatter> getFormatForTypeInput() {
+    if (formaters != null) return formaters!;
     switch (inputType) {
       case TextInputType.name:
         return [UppercaseFirstLetterFormatter()];
@@ -96,10 +103,11 @@ class TextInputField extends StatelessWidget {
               cursorColor: FlColors.withe2,
               inputFormatters: getFormatForTypeInput(),
               validator: validator,
+              onFieldSubmitted: functionSubmited,
               textCapitalization: inputType == TextInputType.name
                   ? TextCapitalization.words
                   : TextCapitalization.sentences,
-              onChanged: functionSubmited,
+              onChanged: onChange,
               style: FlTextStyle.description1,
               decoration: InputDecoration(
                 border: OutlineInputBorder(

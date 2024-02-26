@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 
 class InputDropDown extends StatefulWidget {
+  final String label;
+  final String hintText;
   final List<String> items;
 
   final Function(String) onSelect;
@@ -10,6 +12,8 @@ class InputDropDown extends StatefulWidget {
     super.key,
     required this.items,
     required this.onSelect,
+    required this.label,
+    required this.hintText,
   });
 
   @override
@@ -25,7 +29,7 @@ class _InputDropDownState extends State<InputDropDown> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Tipo de negocio',
+          widget.label,
           style: FlTextStyle.description2,
         ),
         const SizedBox(
@@ -63,7 +67,7 @@ class _InputDropDownState extends State<InputDropDown> {
           dropdownColor: Colors.grey.withOpacity(0.9),
           isExpanded: true,
           hint: Text(
-            '¿A que se dedica tu negocio?',
+            widget.hintText,
             style: FlTextStyle.description2,
           ),
           items: widget.items.map((String value) {

@@ -23,6 +23,7 @@ class HomeController extends GetxController {
     try {
       final listUsers = await GetClientsUseCase().execute();
       listUserResponse.value = listUsers.reversed.toList();
+      messageClient.value = '';
       listUserResponse.refresh();
     } catch (e) {
       var isEmpti = HandleClientData(e).isEmptyList();

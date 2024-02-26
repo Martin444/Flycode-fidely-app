@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/button_rounded.dart';
 import 'package:flycode/widgets/card_glass.dart';
-import 'package:get/get.dart';
 
 class AdCard extends StatefulWidget {
-  const AdCard({super.key});
+  final String title;
+  final String description;
+  final String pathUrl;
+  final Function onClick;
+  const AdCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.pathUrl,
+    required this.onClick,
+  });
 
   @override
   State<AdCard> createState() => _AdCardState();
@@ -36,14 +44,14 @@ class _AdCardState extends State<AdCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Gestiona tus clientes',
+                        widget.title,
                         style: FlTextStyle.title4,
                       ),
                       const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        'La mejor forma de analizar tus ventas',
+                        widget.description,
                         style: FlTextStyle.description2,
                       ),
                     ],
@@ -58,7 +66,7 @@ class _AdCardState extends State<AdCard> {
                         child: ButtonRounded(
                           title: 'Crear',
                           onPressed: () {
-                            Get.toNamed(FlRoutes.REGISTER_CLIENT);
+                            widget.onClick();
                           },
                           load: false,
                         ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/fetures/auth/model/user_model.dart';
-import 'package:flycode/fetures/user/presentation/page/user_page.dart';
+import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/card_glass.dart';
 import 'package:get/get.dart';
 
 class UserTile extends StatefulWidget {
-  User user;
-  UserTile({super.key, required this.user});
+  final User user;
+  const UserTile({super.key, required this.user});
 
   @override
   State<UserTile> createState() => _UserTileState();
@@ -21,7 +21,12 @@ class _UserTileState extends State<UserTile> {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(() => const UserPage());
+            Get.toNamed(
+              FlRoutes.USER_PROFILE.replaceAll(
+                ':idUsuario',
+                widget.user.id!,
+              ),
+            );
           },
           child: CardBlured(
             child: Row(
@@ -57,33 +62,27 @@ class _UserTileState extends State<UserTile> {
                     itemBuilder: (BuildContext context) => [
                       PopupMenuItem(
                         value: 1,
-                        child: Container(
-                          child: Text(
-                            'Editar',
-                            style: FlTextStyle.description2,
-                          ),
+                        child: Text(
+                          'Editar',
+                          style: FlTextStyle.description2,
                         ),
                       ),
                       PopupMenuItem(
                         value: 2,
-                        child: Container(
-                          child: Text(
-                            'Eliminar',
-                            style: FlTextStyle.description2,
-                          ),
+                        child: Text(
+                          'Eliminar',
+                          style: FlTextStyle.description2,
                         ),
                       ),
                       PopupMenuItem(
                         value: 3,
-                        child: Container(
-                          child: Text(
-                            'Reportar',
-                            style: FlTextStyle.description2,
-                          ),
+                        child: Text(
+                          'Reportar',
+                          style: FlTextStyle.description2,
                         ),
                       ),
                     ],
-                    icon: Icon(Icons.more_vert, color: Colors.white),
+                    icon: const Icon(Icons.more_vert, color: Colors.white),
                     color: FlColors.withe2.withOpacity(0.2),
                     onSelected: (value) {
                       // Lógica para manejar la opción seleccionada

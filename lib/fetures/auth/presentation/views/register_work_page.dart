@@ -57,6 +57,8 @@ class _LoginPageState extends State<RegisterWorkPage> {
                               height: 20,
                             ),
                             InputDropDown(
+                              label: 'Tipo de negocio',
+                              hintText: '¿A que se dedica tu negocio?',
                               items: const [
                                 'Punto de venta',
                                 'Distribuidor',

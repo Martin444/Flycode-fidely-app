@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/fetures/home/presentation/controllers/home_controller.dart';
+import 'package:flycode/routes/routes.dart';
+import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/ads_card.dart';
 import 'package:flycode/widgets/user_tile.dart';
@@ -17,13 +19,20 @@ class ClientView extends StatelessWidget {
         horizontal: 20,
         vertical: 20,
       ),
-      child: const Column(
+      child: Column(
         children: [
-          AdCard(),
-          SizedBox(
+          AdCard(
+            title: 'Gestiona tus clientes',
+            description: 'La mejor forma de analizar tus ventas',
+            pathUrl: FlAssetsIcons.onBoard1,
+            onClick: () {
+              Get.toNamed(FlRoutes.REGISTER_CLIENT);
+            },
+          ),
+          const SizedBox(
             height: 20,
           ),
-          ClientList(),
+          const ClientList(),
         ],
       ),
     );
@@ -44,7 +53,6 @@ class _ClientListState extends State<ClientList> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     homeControl.getClientsByUser();
   }

@@ -7,4 +7,6 @@ class FlRoutes {
   static String REGISTER_WORK = '/registra-tu-comercio';
   static String REGISTER_CLIENT = '/registrar-cliente';
   static String REGISTER_SUCCESS = '/registro-exitoso';
+  static String CREATE_CUPON = '/nuevo-cupon';
+  static String USER_PROFILE = '/perfil/:idUsuario';
 }

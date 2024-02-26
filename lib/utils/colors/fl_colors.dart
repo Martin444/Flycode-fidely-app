@@ -13,5 +13,5 @@ class FlColors {
 
   static Color blueSelector = const Color(0xFF130B47);
 
-  static Color blueAction = Color.fromARGB(255, 51, 167, 238);
+  static Color blueAction = const Color.fromARGB(255, 51, 167, 238);
 }

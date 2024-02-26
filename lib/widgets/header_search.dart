@@ -37,6 +37,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
               child: SvgPicture.asset(
                 FlAssetsIcons.menuSvg,
                 // height: 14,
+                // ignore: deprecated_member_use
                 color: FlColors.withe2,
               ),
             ),
