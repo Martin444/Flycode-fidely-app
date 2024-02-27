@@ -77,7 +77,7 @@ class _LoginUserPageState extends State<LoginUserPage> {
                                     isPass: false,
                                     visibleText: false,
                                     errorText: _.errorTextEmail.value,
-                                    functionSubmited: (va) {
+                                    onChange: (va) {
                                       _.validateBtnLoginUser().value;
                                     },
                                   ),
@@ -97,8 +97,13 @@ class _LoginUserPageState extends State<LoginUserPage> {
                                         firstPass = !firstPass;
                                       });
                                     },
-                                    functionSubmited: (va) {
+                                    onChange: (va) {
                                       _.validateBtnLoginUser();
+                                    },
+                                    functionSubmited: (value) async {
+                                      if (!_.isValidInit.value) {
+                                        await _.loginWithEmailandPassword();
+                                      }
                                     },
                                   ),
                                   const SizedBox(

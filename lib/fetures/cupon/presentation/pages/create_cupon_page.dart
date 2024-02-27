@@ -91,16 +91,10 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                 controller: cuponControl.descriptionController,
                                 inputType: TextInputType.multiline,
                                 visibleText: false,
-                                validator: (email) {
-                                  if (email != null) {
-                                    var emailValid =
-                                        FlValidators.validatoObligatory(
-                                      email,
-                                    );
-
-                                    return emailValid;
-                                  }
-                                  return null;
+                                validator: (value) {
+                                  return FlValidators.validatoObligatory(
+                                    value!,
+                                  );
                                 },
                                 isPass: false,
                               ),
@@ -111,17 +105,9 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                 labelText: 'Compra mínima',
                                 controller:
                                     cuponControl.minPurchaseAmountController,
-                                inputType: TextInputType.multiline,
+                                inputType: TextInputType.number,
                                 visibleText: false,
                                 validator: (email) {
-                                  // if (email != null) {
-                                  //   var emailValid =
-                                  //       FlValidators.validatoObligatory(
-                                  //     email,
-                                  //   );
-
-                                  //   return emailValid;
-                                  // }
                                   return null;
                                 },
                                 isPass: false,
