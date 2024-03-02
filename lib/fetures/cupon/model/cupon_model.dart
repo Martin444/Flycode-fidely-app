@@ -54,14 +54,14 @@ class Coupon {
   // Un método para convertir un mapa a un cupón
   Coupon.fromMap(Map<String, dynamic> map) {
     id = map['id'];
-    ownerCommerce = map['ownerCommerce'];
+    ownerCommerce = map["ownerCommerceID"] ?? '';
     photoURL = map['photoURL'];
     title = map['title'];
     description = map['description'];
     type = map['type'];
     percentage = map['percentage'];
     amount = map['amount'];
-    expiryDate = DateTime.parse(map['expiry_date']);
+    expiryDate = DateTime.parse(map["expiryDate"]);
     minPurchaseAmount = map['minPurchaseAmount'];
     maxUsageCount = map['maxUsageCount'];
     applicableProducts = List<String>.from(map['applicableProducts']);

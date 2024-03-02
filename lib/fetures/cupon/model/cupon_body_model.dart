@@ -10,8 +10,8 @@ class CouponBodyModel {
   DateTime? expiryDate;
   int? minPurchaseAmount;
   int? maxUsageCount;
-  List<String>? applicableProducts;
-  List<String>? eligibleUsers;
+  List<String?>? applicableProducts;
+  List<String?>? eligibleUsers;
 
   // El constructor del cupón
   CouponBodyModel({
@@ -29,7 +29,7 @@ class CouponBodyModel {
   });
 
   // Un método para convertir el cupón a un mapa
-  Map<String, dynamic> toMap() {
+  Object toMap() {
     return {
       'photoURL': photoURL,
       'title': title,

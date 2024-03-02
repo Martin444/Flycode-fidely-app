@@ -81,6 +81,11 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                     value!,
                                   );
                                 },
+                                onChange: (value) {
+                                  cuponControl.validateAndSetCupon(
+                                    _formKey.currentState!.validate(),
+                                  );
+                                },
                                 isPass: false,
                               ),
                               const SizedBox(
@@ -96,6 +101,26 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                     value!,
                                   );
                                 },
+                                onChange: (value) {
+                                  cuponControl.validateAndSetCupon(
+                                    _formKey.currentState!.validate(),
+                                  );
+                                },
+                                isPass: false,
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              TextInputField(
+                                labelText: 'Cantidad máxima de usos',
+                                controller: cuponControl.maxUsageController,
+                                inputType: TextInputType.number,
+                                visibleText: false,
+                                onChange: (value) {
+                                  cuponControl.validateAndSetCupon(
+                                    _formKey.currentState!.validate(),
+                                  );
+                                },
                                 isPass: false,
                               ),
                               const SizedBox(
@@ -109,6 +134,11 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                 visibleText: false,
                                 validator: (email) {
                                   return null;
+                                },
+                                onChange: (value) {
+                                  cuponControl.validateAndSetCupon(
+                                    _formKey.currentState!.validate(),
+                                  );
                                 },
                                 isPass: false,
                               ),
@@ -133,6 +163,9 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                   cuponControl.setSelectController(
                                     'type',
                                     newValue,
+                                  );
+                                  cuponControl.validateAndSetCupon(
+                                    _formKey.currentState!.validate(),
                                   );
                                 },
                               ),
@@ -167,7 +200,11 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                                         }
                                         return null;
                                       },
-                                      onChange: (value) {},
+                                      onChange: (value) {
+                                        cuponControl.validateAndSetCupon(
+                                          _formKey.currentState!.validate(),
+                                        );
+                                      },
                                       visibleText: false,
                                       isPass: false,
                                     ),
@@ -185,9 +222,12 @@ class _CreateCuponPageState extends State<CreateCuponPage> {
                           title: 'Crear',
                           onPressed: () {
                             isValidForm = _formKey.currentState!.validate();
-                            if (isValidForm) {}
+                            if (isValidForm) {
+                              cuponControl.createNewCupon();
+                            }
                           },
-                          load: cuponControl.isValidCreate.value,
+                          disabled: !cuponControl.isValidCreatedCupon.value,
+                          load: cuponControl.isLoadNewCupon.value,
                         ),
                         const SizedBox(
                           height: 20,

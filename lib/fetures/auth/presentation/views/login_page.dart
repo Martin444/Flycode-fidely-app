@@ -101,7 +101,7 @@ class _LoginUserPageState extends State<LoginUserPage> {
                                       _.validateBtnLoginUser();
                                     },
                                     functionSubmited: (value) async {
-                                      if (!_.isValidInit.value) {
+                                      if (_.isValidInit.value) {
                                         await _.loginWithEmailandPassword();
                                       }
                                     },
