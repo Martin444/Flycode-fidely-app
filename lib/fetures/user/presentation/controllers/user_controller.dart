@@ -1,10 +1,12 @@
 import 'package:flycode/fetures/auth/model/user_model.dart';
+import 'package:flycode/fetures/user/data/usescases/get_user_usescase.dart';
 import 'package:flycode/fetures/user/data/usescases/user_usescases.dart';
 import 'package:flycode/fetures/user/presentation/handles/user_error_handle.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
   User? principalUser;
+  User? selectedUser;
   bool isLoadingUser = false;
   Future<void> getMeInfo() async {
     try {
@@ -12,6 +14,21 @@ class UserController extends GetxController {
       update();
       User infoMe = await UserUseCase().execute();
       principalUser = infoMe;
+      isLoadingUser = false;
+      update();
+    } catch (e) {
+      isLoadingUser = false;
+      update();
+      HandleUserError(e);
+    }
+  }
+
+  Future<void> getUserInfo(String id) async {
+    try {
+      isLoadingUser = true;
+      update();
+      User infoUser = await GetUserUseCase().execute(id);
+      selectedUser = infoUser;
       isLoadingUser = false;
       update();
     } catch (e) {

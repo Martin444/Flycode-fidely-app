@@ -26,6 +26,7 @@ class _UserTileState extends State<UserTile> {
                 ':idUsuario',
                 widget.user.id!,
               ),
+              arguments: widget.user.id,
             );
           },
           child: CardBlured(

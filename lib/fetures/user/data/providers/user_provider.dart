@@ -9,12 +9,34 @@ import '../../../../core/exceptions/api_exception.dart';
 
 class UserProvider extends UserRepository {
   Uri userURl = Uri.parse('$URL_FIDELY/user/me');
+  Uri userGetURl = Uri.parse('$URL_FIDELY/user/user/{id}');
   @override
   Future<User> getMe() async {
     try {
       var response = await http.get(
         headers: {'Authorization': 'Bearer $ACCESS_TOKEN'},
         userURl,
+      );
+      var respJson = jsonDecode(response.body);
+
+      if (respJson['id'] == null) {
+        throw ApiException(
+          respJson['statusCode'],
+          respJson['message'],
+        );
+      }
+      return User.fromJson(respJson);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<User> getUser(String id) async {
+    try {
+      var response = await http.get(
+        // headers: {'Authorization': 'Bearer $ACCESS_TOKEN'},
+        userGetURl,
       );
       var respJson = jsonDecode(response.body);
 

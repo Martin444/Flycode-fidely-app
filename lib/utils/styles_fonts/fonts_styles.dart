@@ -31,6 +31,12 @@ class FlTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle title6 = GoogleFonts.poppins(
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle description1 = GoogleFonts.poppins(
     color: Colors.white,
     fontSize: 18,

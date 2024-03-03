@@ -17,7 +17,7 @@ class ClientView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
-        vertical: 20,
+        vertical: 0,
       ),
       child: Column(
         children: [
@@ -55,6 +55,7 @@ class _ClientListState extends State<ClientList> {
   void initState() {
     super.initState();
     homeControl.getClientsByUser();
+    homeControl.getCuponsByOwner();
   }
 
   @override

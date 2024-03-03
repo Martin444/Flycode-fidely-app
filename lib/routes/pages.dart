@@ -5,6 +5,7 @@ import 'package:flycode/fetures/auth/presentation/views/register_user.dart';
 import 'package:flycode/fetures/auth/presentation/views/register_work_page.dart';
 import 'package:flycode/fetures/cupon/presentation/controllers/create_cupon_binding.dart';
 import 'package:flycode/fetures/cupon/presentation/pages/create_cupon_page.dart';
+import 'package:flycode/fetures/cupon/presentation/pages/create_cupon_success.dart';
 import 'package:flycode/fetures/home/presentation/controllers/home_binding.dart';
 import 'package:flycode/fetures/home/presentation/page/home_page.dart';
 import 'package:flycode/fetures/client/presentation/controllers/new_client_binding.dart';
@@ -55,6 +56,13 @@ class FlPages {
       middlewares: [AuthMiddleware()],
       binding: NewClientBinding(),
       page: () => const RegisterSuccess(),
+    ),
+    GetPage(
+      name: FlRoutes.CREATE_CUPON_SUCCESS,
+      transition: Transition.fadeIn,
+      middlewares: [AuthMiddleware()],
+      binding: NewClientBinding(),
+      page: () => const CreateCuponSuccess(),
     ),
     GetPage(
       name: FlRoutes.CREATE_CUPON,

@@ -37,7 +37,7 @@ class CouponBodyModel {
       'type': type,
       'percentage': percentage,
       'amount': amount,
-      'expiry_date': expiryDate!.toIso8601String(),
+      'expiryDate': expiryDate!.toUtc().toIso8601String(),
       'minPurchaseAmount': minPurchaseAmount,
       'maxUsageCount': maxUsageCount,
       'applicableProducts': applicableProducts,
@@ -53,7 +53,7 @@ class CouponBodyModel {
     type = map['type'];
     percentage = map['percentage'];
     amount = map['amount'];
-    expiryDate = DateTime.parse(map['expiry_date']);
+    expiryDate = DateTime.parse(map['expiryDate']);
     minPurchaseAmount = map['minPurchaseAmount'];
     maxUsageCount = map['maxUsageCount'];
     applicableProducts = List<String>.from(map['applicableProducts']);

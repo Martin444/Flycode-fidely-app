@@ -43,7 +43,7 @@ class Coupon {
       'type': type,
       'percentage': percentage,
       'amount': amount,
-      'expiry_date': expiryDate!.toIso8601String(),
+      'expiry_date': expiryDate!,
       'minPurchaseAmount': minPurchaseAmount,
       'maxUsageCount': maxUsageCount,
       'applicableProducts': applicableProducts,

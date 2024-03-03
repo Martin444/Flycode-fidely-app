@@ -35,4 +35,10 @@ class PostCuponProvider extends PostCuponRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Coupon>> getMeCupons() {
+    // TODO: implement getMeCupons
+    throw UnimplementedError();
+  }
 }

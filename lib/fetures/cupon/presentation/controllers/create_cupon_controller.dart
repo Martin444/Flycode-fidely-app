@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/fetures/cupon/data/usescases/post_cupon_usescases.dart';
 import 'package:flycode/fetures/cupon/model/cupon_body_model.dart';
+import 'package:flycode/utils/assets/routes/assets_routes.dart';
 import 'package:get/get.dart';
+
+import '../../../../routes/routes.dart';
 
 class CreateCuponController extends GetxController {
   TextEditingController titleController = TextEditingController();
@@ -57,8 +60,7 @@ class CreateCuponController extends GetxController {
 
       var newCupon = await PostCuponUseCase().execute(
         CouponBodyModel(
-          photoURL:
-              'http://res.cloudinary.com/photographer/image/upload/v1698582410/scublm1dh1gpakjohaop.jpg',
+          photoURL: FlAssetsImages.catito,
           title: titleController.text,
           description: descriptionController.text,
           type: typeController.value,
@@ -82,6 +84,7 @@ class CreateCuponController extends GetxController {
       print(newCupon.toMap());
       isLoadNewCupon.value = false;
       isLoadNewCupon.refresh();
+      Get.toNamed(FlRoutes.CREATE_CUPON_SUCCESS);
     } catch (e) {
       print(e);
       isLoadNewCupon.value = false;
