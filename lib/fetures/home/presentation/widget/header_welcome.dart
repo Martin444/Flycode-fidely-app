@@ -19,28 +19,30 @@ class _HeaderWelcomeState extends State<HeaderWelcome> {
 
   @override
   Widget build(BuildContext context) {
-    return CardBlured(
-      child: SizedBox(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                userC.getSaludo(),
-                style: FlTextStyle.title3,
+    return GetBuilder<UserController>(builder: (_) {
+      return CardBlured(
+        child: SizedBox(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  _.getSaludo(),
+                  style: FlTextStyle.title3,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TabsWidget(
-              titles: const ['Clientes', 'Cupones'],
-              onChange: (index) => homeC.setIndexPageHome(index),
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              TabsWidget(
+                titles: const ['Clientes', 'Cupones'],
+                onChange: (index) => homeC.setIndexPageHome(index),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

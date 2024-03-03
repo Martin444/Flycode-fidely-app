@@ -9,7 +9,6 @@ import '../../../../core/exceptions/api_exception.dart';
 
 class UserProvider extends UserRepository {
   Uri userURl = Uri.parse('$URL_FIDELY/user/me');
-  Uri userGetURl = Uri.parse('$URL_FIDELY/user/user/{id}');
   @override
   Future<User> getMe() async {
     try {
@@ -34,6 +33,7 @@ class UserProvider extends UserRepository {
   @override
   Future<User> getUser(String id) async {
     try {
+      Uri userGetURl = Uri.parse('$URL_FIDELY/user/user/$id');
       var response = await http.get(
         // headers: {'Authorization': 'Bearer $ACCESS_TOKEN'},
         userGetURl,

@@ -7,11 +7,9 @@ import 'package:get/get.dart';
 class UserController extends GetxController {
   User? principalUser;
   User? selectedUser;
-  bool isLoadingUser = false;
+  bool isLoadingUser = true;
   Future<void> getMeInfo() async {
     try {
-      isLoadingUser = true;
-      update();
       User infoMe = await UserUseCase().execute();
       principalUser = infoMe;
       isLoadingUser = false;
@@ -23,14 +21,13 @@ class UserController extends GetxController {
     }
   }
 
-  Future<void> getUserInfo(String id) async {
+  Future<User?> getUserInfo(String id) async {
     try {
-      isLoadingUser = true;
-      update();
       User infoUser = await GetUserUseCase().execute(id);
       selectedUser = infoUser;
-      isLoadingUser = false;
       update();
+      isLoadingUser = false;
+      return selectedUser!;
     } catch (e) {
       isLoadingUser = false;
       update();
