@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flycode/fetures/cupon/model/cupon_model.dart';
 import 'package:flycode/utils/formaters/DateTime/date_to_finshed.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/card_glass.dart';
+import 'package:flycode/widgets/overflow_text.dart';
 
 class DiscountCard extends StatelessWidget {
-  final String title;
-  final DateTime? description;
-  final String imageUrl;
+  final Coupon cupon;
 
   const DiscountCard({
     super.key,
-    required this.title,
-    this.description,
-    required this.imageUrl,
+    required this.cupon,
   });
 
   @override
@@ -29,15 +27,17 @@ class DiscountCard extends StatelessWidget {
                   children: [
                     // imagen del producto
                     Expanded(
-                        flex: 3,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: Image.network(
-                            imageUrl,
-                            width: double.infinity,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        )),
+                      flex: 3,
+                      child: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        child: Image.network(
+                          cupon.photoURL,
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
 
                     //informacion adicional
                     Expanded(
@@ -49,19 +49,24 @@ class DiscountCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              title,
-                              textAlign: TextAlign.start,
-                              style: FlTextStyle.title6,
+                            OpOverflowTextDetector(
+                              message: cupon.title,
+                              children: [
+                                Text(
+                                  cupon.title,
+                                  textAlign: TextAlign.start,
+                                  style: FlTextStyle.title6,
+                                )
+                              ],
                             ),
-                            if (description != null) ...[
-                              const SizedBox(height: 8),
-                              Text(
-                                description!.tiempoRestante(description!),
-                                textAlign: TextAlign.start,
-                                style: FlTextStyle.description2,
+                            const SizedBox(height: 8),
+                            Text(
+                              cupon.expiryDate!.tiempoRestante(
+                                cupon.expiryDate!,
                               ),
-                            ],
+                              textAlign: TextAlign.start,
+                              style: FlTextStyle.description2,
+                            ),
                           ],
                         ),
                       ),
@@ -82,9 +87,11 @@ class DiscountCard extends StatelessWidget {
                       bottomLeft: Radius.circular(4),
                     ),
                   ),
-                  child: const Text(
-                    '20% OFF',
-                    style: TextStyle(
+                  child: Text(
+                    cupon.type.contains('Descuento')
+                        ? '${cupon.percentage} %'
+                        : r'$ ' '${cupon.amount}',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),

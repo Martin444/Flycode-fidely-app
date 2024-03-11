@@ -11,6 +11,8 @@ import 'package:flycode/fetures/home/presentation/page/home_page.dart';
 import 'package:flycode/fetures/client/presentation/controllers/new_client_binding.dart';
 import 'package:flycode/fetures/client/presentation/views/register_client.dart';
 import 'package:flycode/fetures/client/presentation/views/register_success.dart';
+import 'package:flycode/fetures/purchase/presentation/controllers/purchase_bindings.dart';
+import 'package:flycode/fetures/purchase/presentation/pages/create_purchase_page.dart';
 import 'package:flycode/fetures/user/presentation/controllers/user_binding.dart';
 import 'package:flycode/fetures/user/presentation/page/user_page.dart';
 import 'package:flycode/routes/routes.dart';
@@ -68,15 +70,29 @@ class FlPages {
       name: FlRoutes.CREATE_CUPON,
       transition: Transition.fadeIn,
       middlewares: [AuthMiddleware()],
-      binding: CreateCuponBinding(),
+      bindings: [
+        CreateCuponBinding(),
+      ],
       page: () => const CreateCuponPage(),
     ),
     GetPage(
       name: FlRoutes.USER_PROFILE,
       transition: Transition.fadeIn,
       middlewares: [AuthMiddleware()],
-      binding: UserBinding(),
+      bindings: [
+        UserBinding(),
+        HomeBinding(),
+      ],
       page: () => const UserPage(),
+    ),
+    GetPage(
+      name: FlRoutes.REGISTER_PURCHACE,
+      transition: Transition.fadeIn,
+      middlewares: [AuthMiddleware()],
+      bindings: [
+        PurchaseBinding(),
+      ],
+      page: () => const CreatePurchasePage(),
     ),
   ];
 }

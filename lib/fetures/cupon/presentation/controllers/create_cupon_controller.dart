@@ -58,7 +58,7 @@ class CreateCuponController extends GetxController {
       final month = int.parse(parts[1]);
       final year = int.parse(parts[2]);
 
-      var newCupon = await PostCuponUseCase().execute(
+      await PostCuponUseCase().execute(
         CouponBodyModel(
           photoURL: FlAssetsImages.catito,
           title: titleController.text,
@@ -81,12 +81,10 @@ class CreateCuponController extends GetxController {
           eligibleUsers: [''],
         ),
       );
-      print(newCupon.toMap());
       isLoadNewCupon.value = false;
       isLoadNewCupon.refresh();
       Get.toNamed(FlRoutes.CREATE_CUPON_SUCCESS);
     } catch (e) {
-      print(e);
       isLoadNewCupon.value = false;
       isLoadNewCupon.refresh();
     }

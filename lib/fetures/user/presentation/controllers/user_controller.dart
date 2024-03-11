@@ -21,18 +21,28 @@ class UserController extends GetxController {
     }
   }
 
+  RxBool isLoadingProfile = true.obs;
+
   Future<User?> getUserInfo(String id) async {
     try {
+      isLoadingProfile.value = true;
+      update();
       User infoUser = await GetUserUseCase().execute(id);
       selectedUser = infoUser;
       update();
-      isLoadingUser = false;
+      isLoadingProfile.value = false;
       return selectedUser!;
     } catch (e) {
       isLoadingUser = false;
       update();
       HandleUserError(e);
     }
+    return null;
+  }
+
+  void disposeUser() {
+    selectedUser = null;
+    update();
   }
 
   String getSaludo() {

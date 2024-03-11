@@ -10,4 +10,5 @@ class FlRoutes {
   static String CREATE_CUPON_SUCCESS = '/cupon-creade';
   static String CREATE_CUPON = '/nuevo-cupon';
   static String USER_PROFILE = '/perfil/:idUsuario';
+  static String REGISTER_PURCHACE = '/registrar-venta';
 }

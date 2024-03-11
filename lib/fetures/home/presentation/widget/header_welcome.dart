@@ -7,7 +7,12 @@ import 'package:flycode/widgets/tab_widget.dart';
 import 'package:get/get.dart';
 
 class HeaderWelcome extends StatefulWidget {
-  const HeaderWelcome({super.key});
+  final Function(int) onChangePage;
+
+  const HeaderWelcome({
+    super.key,
+    required this.onChangePage,
+  });
 
   @override
   State<HeaderWelcome> createState() => _HeaderWelcomeState();
@@ -37,7 +42,7 @@ class _HeaderWelcomeState extends State<HeaderWelcome> {
               ),
               TabsWidget(
                 titles: const ['Clientes', 'Cupones'],
-                onChange: (index) => homeC.setIndexPageHome(index),
+                onChange: (index) => widget.onChangePage(index),
               ),
             ],
           ),

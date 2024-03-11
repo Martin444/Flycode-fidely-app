@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flycode/fetures/auth/model/user_model.dart';
 import 'package:flycode/fetures/cupon/data/usescases/get_cupons_by_owner.dart';
 import 'package:flycode/fetures/cupon/model/cupon_model.dart';
@@ -9,15 +8,6 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   RxInt indexHomePage = 0.obs;
-  PageController contolerHomePageView = PageController();
-
-  void setIndexPageHome(int index) {
-    contolerHomePageView.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
 
   RxList<User> listUserResponse = <User>[].obs;
   RxString messageClient = ''.obs;
@@ -44,16 +34,15 @@ class HomeController extends GetxController {
       final listUsers = await GetCuponsByOwnerUseCase().execute();
       listCuponsHome.value = listUsers.reversed.toList();
       listCuponsHome.refresh();
+      listCuponsWisgetsHome.clear();
       for (var element in listCuponsHome) {
         listCuponsWisgetsHome.add(DiscountCard(
-          title: element.title,
-          imageUrl: element.photoURL,
-          description: element.expiryDate,
+          cupon: element,
         ));
         listCuponsWisgetsHome.refresh();
       }
     } catch (e) {
-      var isEmpti = HandleClientData(e).isEmptyList();
+      HandleClientData(e).isEmptyList();
       // if (isEmpti) {
       //   messageClient.value = 'No tienes clientes';
       // }

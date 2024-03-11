@@ -32,7 +32,7 @@ class LogoSection extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(routeBack!);
+                      routeBack != null ? Get.toNamed(routeBack!) : Get.back();
                     },
                     child: SizedBox(
                       child: SvgPicture.asset(

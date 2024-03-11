@@ -20,11 +20,27 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var userController = Get.find<UserController>();
   var homeController = Get.find<HomeController>();
+  PageController contolerHomePageView = PageController();
+
+  void setIndexPageHome(int index) {
+    try {
+      contolerHomePageView.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } catch (e) {
+      contolerHomePageView = PageController(
+        initialPage: index,
+        viewportFraction: 1.0,
+      );
+    }
+  }
 
   @override
   void initState() {
     userController.getMeInfo();
-    homeController.contolerHomePageView = PageController(
+    contolerHomePageView = PageController(
       initialPage: 0,
       viewportFraction: 1.0,
     );
@@ -61,20 +77,24 @@ class _HomePageState extends State<HomePage> {
                           horizontal: 20,
                           vertical: 20,
                         ),
-                        child: const Column(
+                        child: Column(
                           children: [
-                            HeaderSearch(),
-                            SizedBox(
+                            const HeaderSearch(),
+                            const SizedBox(
                               height: 20,
                             ),
-                            HeaderWelcome(),
+                            HeaderWelcome(
+                              onChangePage: (index) {
+                                setIndexPageHome(index);
+                              },
+                            ),
                           ],
                         ),
                       ),
                       Flexible(
                         child: PageView.builder(
                           itemCount: 2,
-                          controller: homeController.contolerHomePageView,
+                          controller: contolerHomePageView,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (cnt, index) {
                             switch (index) {

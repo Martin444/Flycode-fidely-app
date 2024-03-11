@@ -6,7 +6,6 @@ class HandleUserError extends GlobalResponseDialogs {
   dynamic dataError;
   HandleUserError(e) {
     dataError = e;
-    print(e);
     verifyToken();
     timeOut();
   }
