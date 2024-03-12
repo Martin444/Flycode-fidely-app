@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
+import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 
 class TabsWidget extends StatefulWidget {
   final List<String> titles;
@@ -42,16 +43,17 @@ class _TabsWidgetState extends State<TabsWidget>
         horizontal: 9,
       ),
       decoration: BoxDecoration(
-          color: FlColors.withe2.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 33,
-              blurStyle: BlurStyle.normal,
-              offset: const Offset(0, 7),
-              color: FlColors.blueSelector.withOpacity(0.2),
-            )
-          ]),
+        color: FlColors.withe2.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 33,
+            blurStyle: BlurStyle.normal,
+            offset: const Offset(0, 7),
+            color: FlColors.blueSelector.withOpacity(0.2),
+          )
+        ],
+      ),
       child: TabBar(
         controller: _tabController,
         indicator: BoxDecoration(
@@ -59,6 +61,13 @@ class _TabsWidgetState extends State<TabsWidget>
           color: FlColors.blueSelector,
         ),
         padding: EdgeInsets.zero,
+        indicatorWeight: 0.0,
+        automaticIndicatorColorAdjustment: false,
+        dividerHeight: 0,
+        indicatorColor: Colors.transparent,
+        labelStyle: FlTextStyle.secundaryButtonStyle,
+        indicatorSize: TabBarIndicatorSize.tab,
+        unselectedLabelStyle: FlTextStyle.title3disable,
         indicatorPadding: const EdgeInsets.symmetric(vertical: 6),
         tabs: widget.titles
             .map((title) => Tab(

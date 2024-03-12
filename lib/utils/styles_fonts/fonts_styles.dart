@@ -20,6 +20,12 @@ class FlTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle title3disable = GoogleFonts.poppins(
+    color: const Color.fromARGB(255, 213, 213, 213),
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle title4 = GoogleFonts.poppins(
     color: Colors.white,
     fontSize: 18,

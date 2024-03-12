@@ -33,7 +33,7 @@ class DrawMenu extends StatelessWidget {
                       FlAssetsIcons.backIconSvg,
                       colorFilter: ColorFilter.mode(
                         FlColors.withe2,
-                        BlendMode.color,
+                        BlendMode.dstIn,
                       ),
                       height: 10,
                     ),

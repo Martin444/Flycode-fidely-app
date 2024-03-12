@@ -30,15 +30,20 @@ class _HeaderSearchState extends State<HeaderSearch> {
               Scaffold.of(context).openDrawer();
             },
             child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
               decoration: BoxDecoration(
-                color: FlColors.withe2.withOpacity(0.4),
+                color: FlColors.withe2.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(50),
               ),
               child: SvgPicture.asset(
                 FlAssetsIcons.menuSvg,
-                // height: 14,
-                // ignore: deprecated_member_use
-                color: FlColors.withe2,
+                colorFilter: ColorFilter.mode(
+                  FlColors.withe2,
+                  BlendMode.dstIn,
+                ),
               ),
             ),
           ),
