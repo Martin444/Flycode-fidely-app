@@ -3,11 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CardBlured extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
   final Widget? child;
 
   const CardBlured({
     Key? key,
     required this.child,
+    this.margin,
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class CardBlured extends StatelessWidget {
           sigmaY: 5,
         ),
         child: Container(
+          margin: margin ?? EdgeInsets.zero,
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.2),

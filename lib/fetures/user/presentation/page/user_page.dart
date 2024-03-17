@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flycode/fetures/purchase/presentation/controllers/purchase_controller.dart';
+import 'package:flycode/fetures/purchase/presentation/views/purchases_list.dart';
 import 'package:flycode/fetures/user/presentation/controllers/user_controller.dart';
 import 'package:flycode/routes/routes.dart';
 import 'package:flycode/utils/colors/fl_colors.dart';
+import 'package:flycode/utils/formaters/DateTime/date_to_finshed.dart';
 import 'package:flycode/utils/styles_fonts/fonts_styles.dart';
 import 'package:flycode/widgets/background_circles.dart';
 import 'package:flycode/widgets/buttons/button_icon.dart';
 import 'package:flycode/widgets/card_glass.dart';
-import 'package:flycode/widgets/custom_grid_view.dart';
 import 'package:flycode/widgets/logo_section.dart';
 import 'package:flycode/widgets/users/profile_header.dart';
 import 'package:get/get.dart';
@@ -20,11 +22,15 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   var userContro = Get.find<UserController>();
+  var purchaseContro = Get.find<PurchaseController>();
 
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
       userContro.getUserInfo(Get.arguments ?? Get.currentRoute.split('/').last);
+      purchaseContro.getPurchasesByClientID(
+        Get.arguments ?? Get.currentRoute.split('/').last,
+      );
     });
     super.initState();
   }
@@ -81,9 +87,13 @@ class _UserPageState extends State<UserPage> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const CustomGridView(
-                            widgets: [],
-                          )
+                          GetBuilder<PurchaseController>(
+                            builder: (_) {
+                              return PurchaseList(
+                                pruchases: _.purchaseByClienTSelected,
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -96,33 +106,43 @@ class _UserPageState extends State<UserPage> {
 }
 
 class PurchaseTile extends StatelessWidget {
+  final String title;
+  final String amount;
+  final DateTime created;
+
   const PurchaseTile({
     super.key,
+    required this.title,
+    required this.amount,
+    required this.created,
   });
 
   @override
   Widget build(BuildContext context) {
     return CardBlured(
+      margin: const EdgeInsets.only(bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Articulo de mi tienda',
+            title,
             style: FlTextStyle.textInput1,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'Hace 2h',
+                created.timePassed(),
                 style: FlTextStyle.description2,
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                r'$3232',
+                amount,
+                textAlign: TextAlign.end,
                 style: FlTextStyle.textInput1,
               ),
             ],
